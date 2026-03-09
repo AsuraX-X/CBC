@@ -275,13 +275,12 @@ export default function MainHeader() {
         </div>
 
         <div className="xl:flex hidden flex-1">
-          <nav className="flex gap-1 font-bold">
+          <nav className="flex font-bold" onMouseLeave={() => setIsOpen(null)}>
             {navItems.map((item, i) => (
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => i > 0 && setIsOpen(item)}
-                onMouseLeave={() => setIsOpen(null)}
+                onMouseEnter={() => (i > 0 ? setIsOpen(item) : setIsOpen(null))}
               >
                 <NavLink to={item.link ?? "#"}>
                   <button className="btn-secondary-c text-base hover:bg-[#f8f8f8] bg-transparent">
@@ -296,6 +295,7 @@ export default function MainHeader() {
                     <div
                       className="fixed max-h-3/4 overflow-scroll left-0 w-screen border-t border-t-black/20 bg-white shadow-lg"
                       style={{ top: "calc(var(--header-h, 57px))" }}
+                      onMouseEnter={() => setIsOpen(item)}
                     >
                       <div className="w-full px-4 sm:px-8 pt-12 pb-8 grid grid-cols-2">
                         <div className="grid gap-4 grid-cols-2">

@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  function handleSignUp(e) {
+    e.preventDefault();
+    navigate("/signUp", { state: { email } });
+  }
+
   return (
     <div className="grid px-4 sm:px-8 sm:grid-cols-2 gap-12 py-8 sm:py-16 grid-cols-1">
       <div className="h-full w-full space-y-2 sm:order-1 order-2">
@@ -21,13 +30,21 @@ function Hero() {
           <p className="text-[18px]">
             Trade crypto and more on a platform you can trust.
           </p>
-          <div className="flex sm:flex-row flex-col gap-6">
+          <form
+            onSubmit={handleSignUp}
+            className="flex sm:flex-row flex-col gap-6"
+          >
             <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="satoshi@nakamoto.com"
               className="p-4 border-black/20 border rounded-lg w-full hover:bg-[#f7f7f7]"
             />
-            <button className="btn-primary">Sign Up</button>
-          </div>
+            <button type="submit" className="btn-primary">
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
     </div>

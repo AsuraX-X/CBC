@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Step2({ onNext, onBack }) {
-  const [email, setEmail] = useState("");
+function Step2({ onNext, initialEmail = "" }) {
+  const [email, setEmail] = useState(initialEmail);
 
   function handleSubmit(e) {
     e.preventDefault();

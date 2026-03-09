@@ -11,7 +11,7 @@ function Step9({ onDone }) {
     }
     const id = setTimeout(() => setCountdown((c) => c - 1), 1000);
     return () => clearTimeout(id);
-  }, [countdown]);
+  }, [countdown, onDone]);
 
   return (
     <div className="bg-[#0a0b0d] flex flex-col h-screen">

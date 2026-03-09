@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Step3({ onNext, onBack, email }) {
+function Step3({ onNext, email }) {
   const [digits, setDigits] = useState(Array(6).fill(""));
   const [countdown, setCountdown] = useState(30);
   const inputRefs = useRef([]);
@@ -18,7 +18,7 @@ function Step3({ onNext, onBack, email }) {
     if (digits.every((d) => d !== "")) {
       onNext();
     }
-  }, [digits]);
+  }, [digits, onNext]);
 
   function handleChange(e, index) {
     const val = e.target.value.replace(/\D/g, "").slice(-1);

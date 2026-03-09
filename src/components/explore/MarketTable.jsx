@@ -9,6 +9,22 @@ import {
 import React, { useMemo, useState } from "react";
 import { cryptocurrencies } from "../../data/cryptocurrencies";
 
+// Simple seeded PRNG (mulberry32) to avoid impure Math.random during render
+function mulberry32(seed) {
+  let t = (seed + 0x6d2b79f5) | 0;
+  t = Math.imul(t ^ (t >>> 15), t | 1);
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+}
+
+function seededRandom(seed) {
+  let s = seed;
+  return () => {
+    s = (s + 1) | 0;
+    return mulberry32(s);
+  };
+}
+
 function SparklineChart({ change }) {
   const isPositive = change >= 0;
   const color = isPositive ? "#16a34a" : "#dc2626";
@@ -21,13 +37,15 @@ function SparklineChart({ change }) {
     const bias = isPositive
       ? 0.5 - 0.2 - magnitude * 0.15
       : 0.5 + 0.2 + magnitude * 0.15;
+    // Use a deterministic seed derived from change so the chart is stable across re-renders
+    const rand = seededRandom(Math.round(change * 1000));
     for (let i = 0; i < count; i++) {
-      y += (Math.random() - bias) * 22;
+      y += (rand() - bias) * 22;
       y = Math.max(4, Math.min(56, y));
       pts.push({ x: (i / (count - 1)) * 100, y });
     }
     return pts;
-  }, []);
+  }, [change, isPositive]);
 
   const pathD = points
     .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`)
@@ -194,7 +212,10 @@ function MarketTable({ rowCount = 10 }) {
                   GHS{" "}
                   {(
                     parseFloat(coin.value.replace(/[^0-9.]/g, "")) *
-                    Math.floor(Math.random() * 900 + 100)
+                    (100 +
+                      ((coin.name.charCodeAt(0) * 137 +
+                        coin.name.length * 251) %
+                        900))
                   ).toLocaleString(undefined, { maximumFractionDigits: 2 })}
                 </td>
                 <td className="px-4 py-3">

@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Control() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  function handleSignUp(e) {
+    e.preventDefault();
+    navigate("/signUp", { state: { email } });
+  }
+
   return (
     <div>
       <div className="grid px-4 sm:px-8 sm:grid-cols-2 gap-12 py-8 sm:py-16 grid-cols-1">
@@ -12,13 +21,21 @@ function Control() {
             <p className="text-[18px]">
               Start your portfolio today and discover crypto
             </p>
-            <div className="flex sm:flex-row flex-col gap-6">
+            <form
+              onSubmit={handleSignUp}
+              className="flex sm:flex-row flex-col gap-6"
+            >
               <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="satoshi@nakamoto.com"
                 className="p-4 border-black/20 border rounded-lg w-full hover:bg-[#f7f7f7]"
               />
-              <button className="btn-primary">Sign Up</button>
-            </div>
+              <button type="submit" className="btn-primary">
+                Sign Up
+              </button>
+            </form>
           </div>
         </div>
         <div className="h-full w-full space-y-2 ">

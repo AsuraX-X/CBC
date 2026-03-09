@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Step4({ onNext, onBack }) {
+function Step4({ onNext }) {
   const [agreed, setAgreed] = useState(false);
 
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function GetStarted() {
   return (
@@ -9,7 +10,11 @@ function GetStarted() {
           <p>Create your account today</p>
         </div>
         <div>
-          <button className="btn-secondary text-base px-4 text-black">Sign Up</button>
+          <NavLink to={"/singup"}>
+            <button className="btn-secondary text-base px-4 text-black">
+              Sign Up
+            </button>
+          </NavLink>
         </div>
       </div>
       <div className="w-full h-full">

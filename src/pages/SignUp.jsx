@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Step1 from "../components/signUp/Step1";
 import Step2 from "../components/signUp/Step2";
 import Step3 from "../components/signUp/Step3";
@@ -11,8 +11,10 @@ import Step8 from "../components/signUp/Step8";
 import Step9 from "../components/signUp/Step9";
 
 function SignUp() {
-  const [step, setStep] = useState(1);
-  const [email, setEmail] = useState("");
+  const location = useLocation();
+  const initialEmail = location.state?.email || "";
+  const [step, setStep] = useState(initialEmail ? 2 : 1);
+  const [email, setEmail] = useState(initialEmail);
   const navigate = useNavigate();
 
   const next = () => setStep((s) => s + 1);
@@ -24,11 +26,11 @@ function SignUp() {
     case 2:
       return (
         <Step2
+          initialEmail={email}
           onNext={(submittedEmail) => {
             setEmail(submittedEmail);
             next();
           }}
-          onBack={back}
         />
       );
     case 3:

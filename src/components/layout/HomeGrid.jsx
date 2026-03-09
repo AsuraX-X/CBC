@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function HomeGrid({
   alternate = false,
   compact = false,
@@ -29,9 +31,11 @@ function HomeGrid({
         <div className="flex flex-col max-w-xl gap-y-6">
           <h1 className="sm:text-4xl text-4xl font-medium">{title}</h1>
           <p className="text-black/60">{subtitle}</p>
-          <button className="btn-primary-l bg-[#0a0b0d] hover:bg-[#383839] w-fit">
-            {button}
-          </button>
+          <NavLink to={"/explore"}>
+            <button className="btn-primary-l bg-[#0a0b0d] hover:bg-[#383839] w-fit">
+              {button}
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>
