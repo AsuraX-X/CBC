@@ -7,6 +7,8 @@ import {
   Briefcase,
   Building2,
   ChartCandlestick,
+  ChevronLeft,
+  ChevronRight,
   CircleDollarSign,
   Code2,
   CreditCard,
@@ -30,6 +32,7 @@ import {
   TrendingUp,
   Users,
   Wallet,
+  X,
   Zap,
 } from "lucide-react";
 import { useState } from "react";
@@ -262,16 +265,37 @@ export default function MainHeader() {
   ];
 
   const [isOpen, setIsOpen] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState(null);
+
+  function openMobile() {
+    setMobileSection(null);
+    setMobileOpen(true);
+  }
+
+  function closeMobile() {
+    setMobileOpen(false);
+    setMobileSection(null);
+  }
 
   return (
     <header className="sticky top-0 bg-white z-10 border-b border-b-black/20">
       <div className="flex px-4 xl:px-8 py-3 items-center justify-between gap-4 relative">
         <div className="size-10">
-          <img
-            src="/assets/common/logo.svg"
-            alt="Logo"
-            className="object-cover w-full h-full"
-          />
+          {mobileSection ? (
+            <button
+              className="btn-secondary p-2"
+              onClick={() => setMobileSection(null)}
+            >
+              <ChevronLeft size={20} />
+            </button>
+          ) : (
+            <img
+              src="/assets/common/logo.svg"
+              alt="Logo"
+              className="object-cover w-full h-full"
+            />
+          )}
         </div>
 
         <div className="xl:flex hidden flex-1">
@@ -359,9 +383,71 @@ export default function MainHeader() {
           <NavLink to={"/signUp"}>
             <button className="btn-primary text-base">Sign Up</button>
           </NavLink>
-          <button className="btn-secondary xl:hidden block p-2">
-            <Menu />
+          <button
+            className="btn-secondary xl:hidden block p-2"
+            onClick={mobileOpen ? closeMobile : openMobile}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
+        </div>
+      </div>
+
+      {/* Mobile drawer — drops down from below the header */}
+      <div
+        className={`absolute left-0 w-full h-screen bg-white xl:hidden overflow-hidden shadow-lg border-t border-black/10 transition-all duration-300 ease-in-out ${
+          mobileOpen
+            ? "max-h-[calc(100dvh-57px)] opacity-100"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        {/* Drawer body */}
+        <div className="overflow-y-auto max-h-[calc(100dvh-100px)]">
+          {mobileSection === null ? (
+            /* Top-level nav list */
+            <nav className="flex flex-col py-2">
+              {navItems.map((item) =>
+                item.entries ? (
+                  <button
+                    key={item.name}
+                    onClick={() => setMobileSection(item)}
+                    className="flex items-center justify-between w-full px-5 py-4 font-semibold text-base hover:bg-[#f7f8f9] transition-colors"
+                  >
+                    <span>{item.name}</span>
+                    <ChevronRight size={18} className="text-black/40" />
+                  </button>
+                ) : (
+                  <NavLink
+                    key={item.name}
+                    to={item.link ?? "#"}
+                    onClick={closeMobile}
+                  >
+                    <div className="flex items-center justify-between w-full px-5 py-4 font-semibold text-base hover:bg-[#f7f8f9] transition-colors">
+                      <span>{item.name}</span>
+                    </div>
+                  </NavLink>
+                ),
+              )}
+            </nav>
+          ) : (
+            /* Drill-down entries */
+            <div className="py-4">
+              <div className="flex flex-col">
+                {mobileSection.entries.map((entry, i) => (
+                  <NavLink key={i} to={entry.link ?? "#"} onClick={closeMobile}>
+                    <div className="flex items-center gap-4 px-5 py-3 hover:bg-[#f7f8f9] transition-colors">
+                      <div className="p-2 rounded-xl bg-[#f7f8f9] text-black/70 shrink-0">
+                        {entry.icon}
+                      </div>
+                      <div>
+                        <p className="font-semibold text-sm">{entry.title}</p>
+                        <p className="text-xs text-black/50">{entry.desc}</p>
+                      </div>
+                    </div>
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

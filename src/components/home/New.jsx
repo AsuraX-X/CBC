@@ -3,22 +3,24 @@ import NewBlock from "./NewBlock";
 
 function New() {
   return (
-    <div className="sm:px-28 space-y-16 bg-[#eef0f3] px-4 py-8 sm:py-16">
-      <div className="grid sm:grid-cols-2  grid-cols-1 gap-32">
+    <div className="sm:px-28 space-y-10 sm:space-y-16 bg-[#eef0f3] px-4 py-8 sm:py-16">
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-8 sm:gap-32">
         <div>
-          <h1 className="text-6xl">New to crypto? Learn some crypto basics</h1>
+          <h1 className="text-4xl sm:text-6xl">
+            New to crypto? Learn some crypto basics
+          </h1>
         </div>
-        <div className="space-y-6">
-          <p className="text-[18px] text-black/60">
+        <div className="space-y-4 sm:space-y-6">
+          <p className="text-base sm:text-[18px] text-black/60">
             Beginner guides, practical tips, and market updates for
             first-timers, experienced investors, and everyone in between
           </p>
-          <button className="btn-primary-l  bg-[#0a0b0d] hover:bg-[#383839]">
+          <button className="btn-primary-l bg-[#0a0b0d] hover:bg-[#383839]">
             Read more
           </button>
         </div>
       </div>
-      <div className="grid gap-6 grid-cols-3">
+      <div className="grid gap-8 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <NewBlock
           image="/assets/Home/learn1.png"
           title="USDC: The digital dollar for the global crypto economy..."
