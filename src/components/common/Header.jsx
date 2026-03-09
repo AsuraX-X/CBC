@@ -41,7 +41,7 @@ export default function MainHeader() {
     {
       name: "Individuals",
       upsell: {
-        image: "src/assets/common/navigation-upsell.png",
+        image: "/assets/common/navigation-upsell.png",
         title: "System Update 2025",
         subtitle:
           "System Update 2025The next chapter of Coinbase. Live on X 12/17.",
@@ -110,7 +110,7 @@ export default function MainHeader() {
     {
       name: "Businesses",
       upsell: {
-        image: "src/assets/common/onchain_payment_protocol.png",
+        image: "/assets/common/onchain_payment_protocol.png",
         title: "Commerce Payments Protocol",
         subtitle: "A new standard for onchain payments.",
         link: "Go to Payments",
@@ -142,7 +142,7 @@ export default function MainHeader() {
     {
       name: "Institutions",
       upsell: {
-        image: "src/assets/common/institutions_upsell.png",
+        image: "/assets/common/institutions_upsell.png",
         title: "Our clients",
         subtitle: "Trusted by institutions and government.",
         link: "Learn more",
@@ -174,7 +174,7 @@ export default function MainHeader() {
     {
       name: "Developers",
       upsell: {
-        image: "src/assets/common/developers_upsell.jpg",
+        image: "/assets/common/developers_upsell.jpg",
         title: "World class crypto infrastructure.",
         subtitle: "Discover Coinbase's complete crypto-as-a-service platform.",
         link: "Learn more",
@@ -221,7 +221,7 @@ export default function MainHeader() {
     {
       name: "Company",
       upsell: {
-        image: "src/assets/common/company_upsell.png",
+        image: "/assets/common/company_upsell.png",
         title: "Learn all about Coinbase:",
         subtitle: "We're building the open financial system.",
         link: "Create your account",
@@ -268,7 +268,7 @@ export default function MainHeader() {
       <div className="flex px-4 xl:px-8 py-3 items-center justify-between gap-4 relative">
         <div className="size-10">
           <img
-            src="src/assets/common/logo.svg"
+            src="/assets/common/logo.svg"
             alt="Logo"
             className="object-cover w-full h-full"
           />

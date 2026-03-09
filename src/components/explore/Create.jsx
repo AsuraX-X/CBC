@@ -15,7 +15,7 @@ function Create() {
       </div>
       <div className="place-content-center">
         <img
-          src="src/assets/explore/create.svg"
+          src="/assets/explore/create.svg"
           width={240}
           height={120}
           className="mx-auto"

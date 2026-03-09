@@ -40,7 +40,7 @@ function Control() {
         </div>
         <div className="h-full w-full space-y-2 ">
           <img
-            src="src/assets/Home/cryptos.png"
+            src="/assets/Home/cryptos.png"
             className="object-cover rounded-[60px] h-full w-full"
           />
         </div>

@@ -123,7 +123,7 @@ function Footer() {
       <div className="grid gap-6 sm:gap-8 lg:gap-16 grid-cols-1 sm:grid-cols-3 lg:grid-cols-5">
         <div>
           <div className="size-12">
-            <img src="src/assets/common/logo.svg" alt="logo" />
+            <img src="/assets/common/logo.svg" alt="logo" />
           </div>
         </div>
         <div className="space-y-4 sm:space-y-6">

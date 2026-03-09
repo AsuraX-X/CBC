@@ -7,25 +7,25 @@ const stats = [
     title: "Total Market Cap",
     value: "GHS 24.08T",
     change: -1.2,
-    image: "src/assets/explore/graph1.svg",
+    image: "/assets/explore/graph1.svg",
   },
   {
     title: "Total Volume",
     value: "GHS 1.25T",
     change: -3.46,
-    image: "src/assets/explore/graph2.svg",
+    image: "/assets/explore/graph2.svg",
   },
   {
     title: "Buy-sell Ratio",
     value: "GHS 0.76",
     change: -3.36,
-    image: "src/assets/explore/graph3.svg",
+    image: "/assets/explore/graph3.svg",
   },
   {
     title: "BTC Dominance",
     value: "60.17%",
     change: 0.01,
-    image: "src/assets/explore/graph4.svg",
+    image: "/assets/explore/graph4.svg",
   },
 ];
 

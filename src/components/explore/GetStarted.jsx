@@ -18,7 +18,7 @@ function GetStarted() {
         </div>
       </div>
       <div className="w-full h-full">
-        <img src="src/assets/explore/nuxPopularAssets-5.svg" />
+        <img src="/assets/explore/nuxPopularAssets-5.svg" />
       </div>
     </div>
   );

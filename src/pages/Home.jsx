@@ -27,7 +27,7 @@ function Home() {
             "Powerful analytical tools with the safety and security of Coinbase deliver the ultimate trading experience. Tap into sophisticated charting capabilities, real-time order books, and deep liquidity across hundreds of markets."
           }
           button={"Start trading"}
-          image={"src/assets/Home/Advanced.png"}
+          image={"/assets/Home/Advanced.png"}
           alternate
           compact
         />
@@ -37,7 +37,7 @@ function Home() {
             "Get more out of crypto with one membership: zero trading fees, boosted rewards, priority support, and more."
           }
           button={"Claim free trial"}
-          image={"src/assets/Home/zero_fees_us.png"}
+          image={"/assets/Home/zero_fees_us.png"}
           compact
         />
         <HomeGrid
@@ -46,7 +46,7 @@ function Home() {
             "An everything app to trade, create, discover, and chat, all in one place."
           }
           button={"Learn more"}
-          image={"src/assets/Home/CB_LOLP__1_.png"}
+          image={"/assets/Home/CB_LOLP__1_.png"}
           alternate
           compact
         />

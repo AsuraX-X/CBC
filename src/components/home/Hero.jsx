@@ -14,7 +14,7 @@ function Hero() {
     <div className="grid px-4 sm:px-8 sm:grid-cols-2 gap-12 py-8 sm:py-16 grid-cols-1">
       <div className="h-full w-full space-y-2 sm:order-1 order-2">
         <img
-          src="src/assets/Home/Hero.avif"
+          src="/assets/Home/Hero.avif"
           alt="Hero Image"
           className="object-cover rounded-[60px] h-full w-full"
         />

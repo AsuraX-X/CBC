@@ -8,7 +8,7 @@ function SignIn() {
         <NavLink to={"/"}>
           <img
             className="size-8 brightness-0 invert"
-            src="src/assets/common/logo.svg"
+            src="/assets/common/logo.svg"
             alt=""
           />
         </NavLink>
